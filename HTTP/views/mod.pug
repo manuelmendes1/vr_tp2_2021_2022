@@ -1,0 +1,31 @@
+doctype html
+html(lang='en')
+  head
+    title Moderator Page
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css')
+    style.
+      table.ui.celled img { display: inline-block; }
+      footer { margin: 35px 0 15px 0; text-align: center }
+  body
+    main#main
+    h1.ui.center.aligned.header Last Accesses
+    .ui.container
+      table.ui.celled.table.center.aligned
+        thead
+          tr
+            th ID
+            th User
+            th Date
+        tbody
+          each user in logins
+            tr
+              td #{user.id}
+              td #{user.name}
+              td #{new Date(user.date)}
+          .button
+            a(class="ui button" href="/logout" ) Logout
+        tfoot
+          tr
+            th(colspan='6')
+    footer
+      p © #{new Date().getFullYear()} Virtualização de Redes

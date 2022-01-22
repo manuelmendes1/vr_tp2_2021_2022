@@ -1,0 +1,30 @@
+doctype html
+html(lang='en')
+  head
+    title Administrator Page
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/semantic-ui@2.3.3/dist/semantic.min.css')
+    style.
+      table.ui.celled img { display: inline-block; }
+      footer { margin: 35px 0 15px 0; text-align: center }
+  body
+    main#main
+    h1.ui.center.aligned.header Add Tasks
+    .ui.container
+      form(method='POST' action='/admin' enctype="application/json" class="ui form")
+        div.username(class="field")
+          label User 
+          input( name="username" type="text" placeholder="username" required)
+        div.task(class="field")
+          label Task
+          input( name="task" type="text" placeholder="task" required)
+        div.task(class="field")
+          label Description
+          input( name="description" type="text" placeholder="description" required)
+        div.task(class="field")
+          label Due Date
+          div(class="ui calendar")
+            input(type="datetime-local" name="date" value="2021-06-12T19:30" min="2021-06-07T00:00" required)
+        button(class="ui button" id="submit" type="submit") Add task 
+        a(class="ui button" tabindex="0" href="/logout") Logout
+    footer
+      p © #{new Date().getFullYear()} Virtualização de Redes

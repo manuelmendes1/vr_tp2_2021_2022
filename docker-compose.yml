@@ -17,9 +17,9 @@ services:
             - db
         image: filipeguimaraes99/vr_tp2_auth:latest
         ports:
-            - '3000:3000'
+            - '6000:6000'
         expose: 
-            - '3000'
+            - '6000'
         networks: 
             - db_auth
             - auth_http

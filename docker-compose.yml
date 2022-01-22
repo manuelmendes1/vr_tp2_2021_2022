@@ -1,7 +1,7 @@
 version: '3.3'
 services:
     db:
-        image: filipeguimaraes99/vr_tp2_db:latest
+        image: manuel007/vrttp2db:latest
         restart: always
         ports:
             - '3306:3306'

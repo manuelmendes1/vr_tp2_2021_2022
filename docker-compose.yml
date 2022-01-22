@@ -11,7 +11,7 @@ services:
 
             - my-db:/var/lib/mysql 
         cap_add:
-            - SYS_NICE: "mbind: Operation not permitted"
+            - SYS_NICE
     auth:
         depends_on:
             - db

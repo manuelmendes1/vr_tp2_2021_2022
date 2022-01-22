@@ -1,0 +1,47 @@
+version: '3.3'
+services:
+    db:
+        image: filipeguimaraes99/vr_tp2_db:latest
+        restart: always
+        ports:
+            - '3306:3306'
+        networks: 
+            - db_auth
+        volumes:
+
+            - my-db:/var/lib/mysql 
+        cap_add:
+            - SYS_NICE: "mbind: Operation not permitted"
+    auth:
+        depends_on:
+            - db
+        image: filipeguimaraes99/vr_tp2_auth:latest
+        ports:
+            - '3000:3000'
+        expose: 
+            - '3000'
+        networks: 
+            - db_auth
+            - auth_http
+    http:
+        depends_on:
+            - auth
+        image: filipeguimaraes99/vr_tp2_http:latest
+        ports:
+            - '7000:7000'
+        expose: 
+            - '7000'
+        volumes:
+            - my-data-http:/server/data 
+        networks: 
+            - auth_http
+    ftp:
+    
+volumes:
+    my-db:
+        driver: local
+    my-data-http:
+        driver: local
+networks: 
+    db_auth:
+    auth_http:
